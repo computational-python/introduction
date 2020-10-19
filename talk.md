@@ -3,7 +3,6 @@
 </script>
 # Introduction to Python
 
-## Computational Python
 
 KTH
 
