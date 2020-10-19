@@ -66,7 +66,7 @@ $ pip install mu-editor
 $ mu-editor hello.py
 ~~~
 
-<img src="/img/mu.png" height="350">
+<img src="img/mu.png" height="350">
 
 ---
 
@@ -74,7 +74,7 @@ $ mu-editor hello.py
 
 * Microsoft open source project
 
-<img src="/img/vsc.png" height="400">
+<img src="img/vsc.png" height="400">
 
 ---
 
@@ -82,7 +82,7 @@ $ mu-editor hello.py
 
 * Community and Professional editions from JetBrains
 
-<img src="/img/pycharm.png" height="400">
+<img src="img/pycharm.png" height="400">
 
 * see https://www.jetbrains.com/student/
 
@@ -95,7 +95,7 @@ $ mu-editor hello.py
 ~~~
 $ jupyter notebook
 ~~~
-<img src='/img/jupyter.png' height="350" >
+<img src='img/jupyter.png' height="350" >
 * good for exploration/experimentation/demonstration
 * not good for writing large structured programs
 
