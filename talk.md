@@ -208,6 +208,42 @@ Handy packing and unpacking
 
 
 ```
+
+### On mutable/immutable
+
+* mutable == can mutate/change
+
+space in memory known in advance
+
+e.g. strings
+
+~~~
+>>> s = 'abc'
+>>> s[1] = ' '
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object does not support item assignment
+>>> 
+~~~
+
+# immutable
+None
+bool
+int
+float
+str
+tuple
+
+
+# mutable
+list
+dict
+set
+
+
+keys in dictionaries have to be hashable
+a tuple can contain immutable data
+
 ---
 
 ### Dictionaries
