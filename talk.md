@@ -1,26 +1,89 @@
+
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 # Introduction to Python
 
+## FCA3004
 
 KTH
 
 ---
-
 layout: false
 
-# Python Basics
+
+## What is Python
+
+<a title="Daniel Stroud, CC BY-SA 4.0
+&lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons"
+href="https://commons.wikimedia.org/wiki/File:Guido-portrait-2014.jpg"><img
+width="256" alt="Guido-portrait-2014"
+src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Guido-portrait-2014.jpg/512px-Guido-portrait-2014.jpg"></a>
+
+Python is a scripting language written by Guido van Rossum 
+
+> *My original motivation for creating Python was the perceived need for a higher
+> level language in the Amoeba [Operating Systems] project. I realized that the
+> development of system administration utilities in C was taking too long.
+> Moreover, doing these things in the Bourne shell wouldn’t work for a variety of
+> reasons. … So, there was a need for a language that would bridge the gap
+> between C and the shell.*
+
+---
+
+## Who uses Python
+
+From small scripts to large applications
+<div class="row">
+
+<div class="col">
+    <code class="hljs">print("Hello world!")</code>
+</div>
+
+<div class="col">
+ <img class="img-fluid" src="{{ base }}/img/th-808922334.jpeg">
+</div>
+
+<div class="col">
+ <img class="img-fluid" src="{{ base }}/img/Instagram_logo_2022.svg.png">
+</div>
+ 
+</div>
+
+---
+
+## How to run Python
+
+### Command-line
+
+Many Python programs are run from the computer's command-line interface (CLI). 
+In the CLI you type commands that the computer interprets and acts upon.
+
+* The CLI on a mac/linux is a terminal program that reads commands in the bash
+scripting language (or equivalent)
+* The CLI on windows is the console program known as CMD.
+* The CLI prompt is a character string printed at the beginning of each line when 
+  waiting for a command
+
+In these slides we use the convention
+
+* `$ `  is the bash prompt (mac/linux)
+* `C> ` is the CMD prompt (windows)
+
+Typing `python` in the CLI starts an interactive Python session accepting
+Python commands 
+
+* `>>> ` is the Python prompt
+
+---
 
 
-## Running
-
-### Interactively
-
-* `python` without arguments starts up  the Python interpreter 
-* The interpreter reads lines one by one in the Python programming language and executes them
-* The interpreter prints prompt `>>>` when it is waiting for input
-
+* The Python interactive shell is also known as the REPL (read-evaluate-print-loop)
+    - R read a Python expression
+    - E evaluate the expression
+    - P print the value of the expressions to the screen
+    - L loop (start over)
+    
 ~~~
 $ python
 >>> print("Hello world")
@@ -28,11 +91,37 @@ Hello world
 >>>
 ~~~
 
-* A read-evaluate-print-loop (REPL)
-    - reads a Python expression
-    - evaluates the expression
-    - prints the value to the screen
-    - starting over (loop)
+* Use case: a desktop calculator
+
+~~~
+$ python
+>>> 10 + 10*0.25
+12.5
+>>> _  * 2
+25.0
+
+~~~
+
+* in this context the underscore `_` means the value of the previous expression
+
+---
+
+### Running Python scripts
+
+Assuming you have a file with Python instructions:
+
+`hello.py `
+
+{{ '<img src="{root}/img/hi.png" width="50%">'.format(root=base) }}
+
+you run the script by giving it as a command-line argument to the python
+interpreter
+
+~~~
+$ python hello.py
+Hello world
+Goodbye
+~~~
 
 ---
 
@@ -45,8 +134,7 @@ like Microsoft Word). A text editor is good for programming if it automatically
 colors special keywords for the programming language of that file. A simple 
 editor that fulfills this is `nano`.
 
-<img src="img/nano.png" height="250">
-
+{{ '<img src="{chapter}/img/nano.png" height="250">'.format(chapter=base) }}
 
 Developers survey on 
 <a href="https://insights.stackoverflow.com/survey/2018/#development-environments-and-tools">
@@ -66,7 +154,7 @@ $ pip install mu-editor
 $ mu-editor hello.py
 ~~~
 
-<img src="img/mu.png" height="350">
+{{ '<img src="{root}/img/mu.png" height="350">'.format(root=base) }}
 
 ---
 
@@ -74,7 +162,7 @@ $ mu-editor hello.py
 
 * Microsoft open source project
 
-<img src="img/vsc.png" height="400">
+{{ '<img src="{root}/img/vsc.png" height="400">'.format(root=base) }}
 
 ---
 
@@ -82,7 +170,7 @@ $ mu-editor hello.py
 
 * Community and Professional editions from JetBrains
 
-<img src="img/pycharm.png" height="400">
+{{ '<img src="{root}/img/pycharm.png" height="400">'.format(root=base) }}
 
 * see https://www.jetbrains.com/student/
 
@@ -95,95 +183,197 @@ $ mu-editor hello.py
 ~~~
 $ jupyter notebook
 ~~~
-<img src='img/jupyter.png' height="350" >
+{{ '<img src="{root}/img/jupyter.png" height="350" >'.format(root=base) }}
 * good for exploration/experimentation/demonstration
 * not good for writing large structured programs
 
 
 ---
 
-## Some Python types
+# Language fundamentals
 
-Values in Python have a type
-A type determines the range of possible values and operations that can be
-performed
+## Python names
 
-###  Numerical
+* Names in Python are what most languages refer to as variables, or variable names
+* To save the value of an object a name can be assigned to it
+* The assignment operator is `=`
+* Assignment is to bind a name to an object
+
+~~~
+>>> x = 8 * 9
+
+~~~
+
+1. The right-hand side is evaluated
+1. An `int` object with value 72 is created in memory
+1. An association is created with this object and the name `x`
+
+<pre style='background-color:#fbf1c7;'>
+                ┏━━┓
+                ┃ x┃
+    ┌─┐   ┌─┐   ┡━━┩ 
+    │8│ * │9│ → │72│
+    └─┘   └─┘   └──┘
+</pre> 
+---
+
+* The name can be used in other expressions as an alias for that value
+
+~~~
+>>> print(x + x)
+144
+
+~~~
+
+---
+
+## Python values and types
+
+Objects and expressions in Python have a value of some type.
+A type determines the range of possible values and operations that are defined
+for objects of that type.
+
+
+###  Numerical types
 
 * whole numbers (`int`): e.g. `-1, 7, 2000`
 * decimal numbers (`float`): `3.14, 1.0 -7.25`
 * complex numbers (`complex`): `1j, 7+5j`
 * logical (`bool`): `True`, `False`
 
+
+### Numerical operations
+* `+` Addition
+* `-` Subtraction
+* `*` Multiplication
+* `/` Division (`7 / 2 → 3.5`)
+* `//` Integer floor division (`7 // 2 → 3`)
+* `%` Integer modulus (remainder) (`7 % 2 → 1`)
+
 ---
 
-###  String: `str`
+### Logical operations
+* `and` 
+    - `True and True` → `True`
+    - `True and False` → `False`
+    - `False and False` → `False`
+* `or` 
+    - `True or True` → `True`
+    - `True or False` → `True`
+    - `False or False` → `False`
+* `not` 
+    - `not True` → `False`
+    - `not False` → `True`
 
-- sequence of characters
+* equality
+    - `1 == 1` → `True`
+    - `1 == 1.0` → `True`
+    - `1 != 1` → `False`
+---
+* identity
+    - `1 is 1` → `True`
+    - `1 is 1.0` → `False`
+* relational
+    - `1 < 1` → `False`
+    - `1 >= 1.0` → `True`
+---
+
+###  Strings: `str`
+
+- a string is a sequence of characters [(unicode)](https://home.unicode.org/)
 - literal strings are written within quotation marks
 - single `'` and double `"` quotation marks have the same status
 - three quotation marks limit strings that can span several lines
-
+- there is no single character type
 
 ~~~
 >>> print("It's time")
 It's time
+
 ~~~
-
-
 ~~~
 >>> print('Our boss is "nice". 😀')
 Our boss is "nice". 😀
-~~~
 
+~~~
 ~~~
 >>> print("""Hello
 ... world""")
 Hello
 world
+
 ~~~
 
 ---
 
-## Variables
+### String operations
 
-* To save the value of an object it is assigned to a *variable*
-* The assignment operator is `=`
-* Assignment is to bind a name to an object
-* Python has so called free typing 
+* Concatenation
 
-### Example
 ~~~
->>> x = 8*9
->>> print(x)
-72
+>>> 'hello' + 'world'
+'helloworld'
+
 ~~~
 
-* Right-side is evaluated
-* An `int` object with value 72 is created in memory
-* An association is created with this object and the name `x`
+* Duplication
+
+~~~
+>>> 'bye' * 2
+'byebye'
+
+~~~
+
+### Common methods
+
+~~~
+>>> 'FORTRAN'.lower()
+'fortran'
+
+~~~
+
+~~~
+>>> 'c++'.upper()
+'C++'
+
+~~~
+
+~~~
+>>> 'jo'.capitalize()
+'Jo'
+
+~~~
 
 ---
+
 
 ## Container types
 
-* Lists
-* Tuples
-* Dictionaries
-
----
+The most important container types are lists, tuples and dictionaries
 
 ### Lists
 
 * A list is a ordered sequence of elements 
-* Notation: square brackets , comma-separated
-* List can have objects of different types
+* A literal list in code is defined by square brackets and comma-separated
+  elements `[0, 1, 2]`
+* List can have members of different types
 * List members are referenced with `[n]` where `n=0, 1, 2...`
 * A list can be empty, `[]`
 
 ~~~
 >>> colours = ['hearts', 'spades', 'diamonds', 'clubs']
 >>> values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'knight', 'queen', 'king', 'ace']
+>>> colours[0]
+'hearts'
+
+~~~
+
+*Note that brackets are both used in the notation for a literal list and for
+getting a member from a collection (not only for lists)*
+
+~~~
+>>> a_list = [1, 'a']
+>>> a_member = a_list[0]
 ~~~
 
 ---
@@ -198,67 +388,38 @@ world
 Handy packing and unpacking
 
 ```
->>> t = 1, 2 #packing
->>> x, y = t #unpacking
->>> x, y
-(1, 2)
->>> x, y = y, x #swapping
->>> x, y
-(2, 1)
-
+>>> t = 1, 2 # packing
+>>> x, y = t # unpacking
+>>> x
+1
+>>> y
+2
+>>> x, y = y, x # swapping (packing and unpacking)
+>>> x
+2
+>>> y
+1
 
 ```
-
-### On mutable/immutable
-
-* mutable == can mutate/change
-
-space in memory known in advance
-
-e.g. strings
-
-~~~
->>> s = 'abc'
->>> s[1] = ' '
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-TypeError: 'str' object does not support item assignment
->>> 
-~~~
-
-# immutable
-None
-bool
-int
-float
-str
-tuple
-
-
-# mutable
-list
-dict
-set
-
-
-keys in dictionaries have to be hashable
-a tuple can contain immutable data
-
 ---
 
 ### Dictionaries
 
-* Sets of key-value pairs
-* The key can be any immutable object
+* The `dict` type define sets of key-value pairs
+* Curly braces with comma-separates pairs define a literal dict
+* Each pair is separated by a colon `:`
+* The key can be any immutable (unchangeable) object
 * Very useful for complex structures
 * Efficient and highly optimized
 
 ```
 empty =  {} # empty dict
-newdict = {'a':1, 'b':2}
+newdict = {'a': 1, 'b': 2}
 ```
 
 ---
+
+## Program logic
 
 ### Repetition (iteration, looping)
 
@@ -267,6 +428,7 @@ sequence
 
 * A loop variable will reference the elements of the sequence, one at a time
 
+### Looping over lists
 
 ```python
 >>> for e in [1, 2, 3]: 
@@ -276,6 +438,9 @@ sequence
 3
 
 ```
+---
+
+### Looping over strings
 
 ```python
 >>> for c in 'hello':
@@ -288,11 +453,21 @@ o
 
 ```
 
+### Looping over dictionaries
 
 
 ```python
->>> for k, v in {'a': 1, 'b': 2}.items():                                       
+>>> d = {'a': 1, 'b': 2}
+>>> for k, v in d.items():
 ...    print(k, v)
+a 1
+b 2
+
+```
+
+```python
+>>> for k in d:
+...    print(k, d[k])
 a 1
 b 2
 
@@ -301,7 +476,7 @@ b 2
 
 ---
 
-### Branching (if statements)
+## Branching
 
 Conditional execution of code blocks depending on whether an expression
 evaluates to True or not:
@@ -339,6 +514,7 @@ Empty list
 
 ---
 
+## Program units
 
 ### Functions
 
@@ -350,12 +526,15 @@ arguments (comma-separated) and a colon.
 The body of the function is indented with respect to the `def` keyword.
 The last line of a function definition is normally a `return` statement and determines the value of a function call
 
+
 ```
 >>> def square(x):
 ...    x2 = x * x
 ...    return x2
 
 ```
+
+---
 
 * Functions are called with function name and an actual parameter. 
 
@@ -374,7 +553,7 @@ parameter `2`.
 ### Modules
 
 
-* a file with python source 
+* a file with Python source
    - name is the filename without the ``.py`` extension
 * `import` modules to reuse code
 * members of module referenced with dot notation `module.member`
@@ -391,8 +570,8 @@ Commonly used Python modules
 
 * system modules
 * needed e.g. for arguments to a script
-* `sys.argv` is a list of string arguments
-* `sys.argv [0]` is the file name
+* `sys.argv` is a list containing command-line arguments
+* The first element `sys.argv [0]` is the file name
 
 ~~~
 import sys
@@ -409,6 +588,7 @@ infile = sys.argv[1]
     os.system('/bin/date')
 ```
 
+---
 
 #### `math`
 
@@ -419,6 +599,7 @@ infile = sys.argv[1]
     import math
     print(math.sin(math.pi/2))
 ```
+
 
 #### Tip
 
@@ -449,6 +630,7 @@ def say_hello():
 >>> message = hello.say_hello()
 >>> print(message)
 Hello world!
+
 ~~~
 
 ---
@@ -496,13 +678,13 @@ def print_mult_table(n):
 
 Version 6: call the function from the command line
 ~~~
+import sys
+
 def print_mult_table(n):
     for i in range(1, 11):
         print(i * n)
 
 if __name__ == "__main__":
-    
-    import sys
     print_mult_table(int(sys.argv[1]))
 ~~~
 
@@ -517,13 +699,18 @@ module imported by other programs
 
 ---
 
-### Summary
+## Summary
 
 * Basic syntax - indentation
-* Basic built in variable types
+* Basic built-in types
 * Scalar and container types
+* Variables
 * Functions
 * Modules
+
+---
+
+## Reference
 
 ### Standard documentation
 * https://docs.python.org/3
@@ -534,6 +721,12 @@ module imported by other programs
 * Jake van der Plas: <a href="https://jakevdp.github.io/PythonDataScienceHandbook/">Data Science Handbook</a>
 * Al Sweigart: <a href="https://automatetheboringstuff.com">Automate the Boring Stuff with Python</a>
 
-### On-line tutorials
+### Online tutorials
 * https://docs.python.org/3/tutorial/
 * https://realpython.com
+* https://dabeaz-course.github.io/practical-python
+
+### Youtube
+* Variables in Python https://www.youtube.com/watch?v=_AEJHKGk9ns
+
+
