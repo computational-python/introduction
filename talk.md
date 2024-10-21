@@ -34,21 +34,22 @@ Python is a scripting language written by Guido van Rossum
 ## Who uses Python
 
 From small scripts to large applications
+
 <div class="row">
-
-<div class="col">
-    <code class="hljs">print("Hello world!")</code>
+    <div class="col">
+        <code class="hljs">print("Hello world!")</code>
+    </div>
+    <div class="col">
+     <img class="img-fluid" src="img/th-808922334.jpeg">
+    </div>
+    <div class="col">
+     <img class="img-fluid" src="img/Instagram_logo_2022.svg.png">
+    </div>
 </div>
 
-<div class="col">
- <img class="img-fluid" src="{{ base }}/img/th-808922334.jpeg">
-</div>
-
-<div class="col">
- <img class="img-fluid" src="{{ base }}/img/Instagram_logo_2022.svg.png">
-</div>
- 
-</div>
+<!--
+!(th)[img/th-808922334.jpeg]
+-->
 
 ---
 
@@ -112,7 +113,7 @@ Assuming you have a file with Python instructions:
 
 `hello.py `
 
-{{ '<img src="{root}/img/hi.png" width="50%">'.format(root=base) }}
+<img src="img/hi.png" height="200">
 
 you run the script by giving it as a command-line argument to the python
 interpreter
