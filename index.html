@@ -3,6 +3,7 @@
   <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style type="text/css">
       @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
@@ -122,6 +123,7 @@
       src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
   <body>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
@@ -143,7 +145,6 @@
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
     <textarea id="source">
 name: inverse
 layout: true
@@ -160,6 +161,7 @@ class: center, middle, inverse
 KTH
 
 ---
+layout: false
 
 layout: false
 
@@ -198,7 +200,7 @@ like Microsoft Word). A text editor is good for programming if it automatically
 colors special keywords for the programming language of that file. A simple 
 editor that fulfills this is `nano`.
 
-<img src="img/nano.png" height="250">
+<img src="/introduction/img/nano.png" height="250">
 
 
 Developers survey on 
@@ -219,7 +221,7 @@ $ pip install mu-editor
 $ mu-editor hello.py
 ~~~
 
-<img src="img/mu.png" height="350">
+<img src="/introduction/img/mu.png" height="350">
 
 ---
 
@@ -227,7 +229,7 @@ $ mu-editor hello.py
 
 * Microsoft open source project
 
-<img src="img/vsc.png" height="400">
+<img src="/introduction/img/vsc.png" height="400">
 
 ---
 
@@ -235,7 +237,7 @@ $ mu-editor hello.py
 
 * Community and Professional editions from JetBrains
 
-<img src="img/pycharm.png" height="400">
+<img src="/introduction/img/pycharm.png" height="400">
 
 * see https://www.jetbrains.com/student/
 
@@ -248,7 +250,7 @@ $ mu-editor hello.py
 ~~~
 $ jupyter notebook
 ~~~
-<img src='img/jupyter.png' height="350" >
+<img src='/introduction/img/jupyter.png' height="350" >
 * good for exploration/experimentation/demonstration
 * not good for writing large structured programs
 
@@ -667,5 +669,6 @@ module imported by other programs
           highlightLanguage: 'remark'
         }) ;
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>
