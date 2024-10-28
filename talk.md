@@ -1,7 +1,3 @@
-
-<script type="text/javascript"
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 # Introduction to Python
 
 ## FCA3004
@@ -50,6 +46,61 @@ From small scripts to large applications
 <!--
 !(th)[img/th-808922334.jpeg]
 -->
+
+---
+
+## How to install Python
+
+* Python is pre-installed on most Linux and Mac systems
+
+* Windows has its own Python "app" that can be installed from the Microsoft Store
+
+* Download from https://www.python.org/downloads/
+
+* Using external package managers (e.g. miniconda, pyenv)
+    - with additional support for isolated development environments
+
+---
+
+### Miniconda
+
+Anaconda or miniconda is a package manager that can be used to install Python
+
+* Download from https://docs.anaconda.com/miniconda/miniconda-install/
+and run the exe file
+
+~~~
+$ bash Miniconda3-latest-Linux-x86_64.sh
+...
+Please, press ENTER to continue
+>>> 
+Do you accept the license terms? [yes|no]
+[no] >>> yes
+...
+  - Press ENTER to confirm the location
+[/home/olav/miniconda3] >>> 
+...
+Do you wish to update your shell profile to automatically initialize conda?
+...
+[no] >>> no
+~~~
+
+---
+
+conda is a combination of a package manager and an environment tool, which allows for isolated development environments with its unique dependencies installed
+
+* Create a new environment
+
+~~~
+$ conda create --name myenv python=3.12 -y
+...
+$ conda activate myenv
+(myenv) $ which python
+/home/olav/.pyenv/versions/miniconda3-latest/envs/myenv/bin/python
+(myenv) $
+(myenv) $ conda deactivate
+$
+~~~
 
 ---
 
@@ -135,7 +186,7 @@ like Microsoft Word). A text editor is good for programming if it automatically
 colors special keywords for the programming language of that file. A simple 
 editor that fulfills this is `nano`.
 
-{{ '<img src="{chapter}/img/nano.png" height="250">'.format(chapter=base) }}
+<img src="img/nano.png" height="250">
 
 Developers survey on 
 <a href="https://insights.stackoverflow.com/survey/2018/#development-environments-and-tools">
@@ -155,7 +206,7 @@ $ pip install mu-editor
 $ mu-editor hello.py
 ~~~
 
-{{ '<img src="{root}/img/mu.png" height="350">'.format(root=base) }}
+<img src="img/mu.png" height="350">
 
 ---
 
@@ -163,7 +214,7 @@ $ mu-editor hello.py
 
 * Microsoft open source project
 
-{{ '<img src="{root}/img/vsc.png" height="400">'.format(root=base) }}
+<img src="img/vsc.png" height="400">
 
 ---
 
@@ -171,7 +222,7 @@ $ mu-editor hello.py
 
 * Community and Professional editions from JetBrains
 
-{{ '<img src="{root}/img/pycharm.png" height="400">'.format(root=base) }}
+<img src="img/pycharm.png" height="400">
 
 * see https://www.jetbrains.com/student/
 
@@ -184,7 +235,7 @@ $ mu-editor hello.py
 ~~~
 $ jupyter notebook
 ~~~
-{{ '<img src="{root}/img/jupyter.png" height="350" >'.format(root=base) }}
+<img src="img/jupyter.png" height="350" >
 * good for exploration/experimentation/demonstration
 * not good for writing large structured programs
 
