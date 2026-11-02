@@ -1,4 +1,4 @@
-index.html: talk.md
+index.html: talk.md talk.css
 	python refreeze/freeze.py
 	perl -pi -e 's;img/;/introduction/img/;' index.html
 
