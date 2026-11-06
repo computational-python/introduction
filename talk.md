@@ -500,6 +500,7 @@ newdict = {'a': 1, 'b': 2}
 
 ### Repetition (iteration, looping)
 
+* The `while` statement: repeat something while an expression is True
 * The `for ... in` statement is used repeat the same operation for all elements of a
 sequence
 
