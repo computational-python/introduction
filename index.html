@@ -550,6 +550,7 @@ world
 * To save the value of an object a name can be assigned to it
 * The assignment operator is `=`
 * Assignment is to bind a name to an object
+* Names are untyped 
 
 ~~~
 >>> x = 8 * 9
@@ -646,9 +647,24 @@ Handy packing and unpacking
 * Efficient and highly optimized
 
 ```
-empty =  {} # empty dict
+empty =  {} # create an empty dict
+empty = dict() # same thing
+
 newdict = {'a': 1, 'b': 2}
 ```
+
+---
+
+### Sets
+
+* The Python `set` is an unordered collection of unique object
+* Curly braces with single objects
+
+~~~
+s = set() #empty set
+s = {1, 2}
+s = set([1,2, 2, ...]) # unique value in the list {1, 2, ...}
+~~~
 
 ---
 
@@ -656,6 +672,7 @@ newdict = {'a': 1, 'b': 2}
 
 ### Repetition (iteration, looping)
 
+* The `while` statement: repeat something while an expression is True
 * The `for ... in` statement is used repeat the same operation for all elements of a
 sequence
 
@@ -747,199 +764,21 @@ Empty list
 
 ---
 
-## Program units
-
-### Functions
-
-* Functions are objects that can take some input and return some output.
-Functions are the primary way of grouping code into independent units, that can be tested and reused
-
-* Function definitions start `def`, a name,  parentheses with or without
-arguments (comma-separated) and a colon.
-The body of the function is indented with respect to the `def` keyword.
-The last line of a function definition is normally a `return` statement and determines the value of a function call
-
-
-```
->>> def square(x):
-...    x2 = x * x
-...    return x2
-
-```
-
----
-
-* Functions are called with function name and an actual parameter. 
-
-```
->>> square(2)
-4
-
-```
-
-* Inside the function the formal parameter `x` becomes a reference to the actual
-parameter `2`.
-
-
----
-
-### Modules
-
-
-* a file with Python source
-   - name is the filename without the ``.py`` extension
-* `import` modules to reuse code
-* members of module referenced with dot notation `module.member`
-
-Commonly used Python modules
-
-* ``sys``
-* ``os``
-* ``math``
-
----
-
-#### `sys`
-
-* system modules
-* needed e.g. for arguments to a script
-* `sys.argv` is a list containing command-line arguments
-* The first element `sys.argv [0]` is the file name
-
-~~~
-import sys
-infile = sys.argv[1]
-~~~
-
-#### `os`
-
-* Interaction with operating system
-* Example: execute a unix command 
-
-```
-    import os
-    os.system('/bin/date')
-```
-
----
-
-#### `math`
-
-* all basic elementary functions
-* fundamental constants
-
-```
-    import math
-    print(math.sin(math.pi/2))
-```
-
-
-#### Tip
-
-Many use the math modules as a desktop calculator
-
-    $ python
-    >>> from math import *
-    >>> print(pi/2)
-    1.5707963267948966
-    >>>
-
----
-
-### Writing/using your own modules
-
-* Suppose you have written file ``hello.py`` with function ``say_hello``
-
-~~~
-#hello.py
-def say_hello():
-    return "Hello world!"
-~~~
-
-* To access the same function in other code, import the module
-
-~~~
->>> import hello
->>> message = hello.say_hello()
->>> print(message)
-Hello world!
-
-~~~
-
----
-
-### Sample code: multiplication table
-
-Version 1: if we only know print
-~~~
-print(1 * 7)
-print(2 * 7)
-print(3 * 7)
-~~~
-
-Version 2: extract the varying data to a variable
-~~~
-i = 1
-print(i * 7)
-i = 2
-print(i * 7)
-i = 3
-print(i * 7)
-~~~
-
-Version 3: introduction the for loop, indented blocks
-~~~
-for i in (1, 2, 3, 4, 5, 6, 7, 8 , 9, 10):
-    print(i * 7)
-~~~
-
-Version 4: the `range` function
-~~~
-n = 7
-for i in range(1, 11):
-    print(i * n)
-~~~
-
----
-
-Version 5: define as a function
-~~~
-def print_mult_table(n):
-    for i in range(1, 11):
-        print(i * n)
-~~~
-
-Version 6: call the function from the command line
-~~~
-import sys
-
-def print_mult_table(n):
-    for i in range(1, 11):
-        print(i * n)
-
-if __name__ == "__main__":
-    print_mult_table(int(sys.argv[1]))
-~~~
-
-* the system variable `__name__` has the value `"__main__"` (double underscores)
-when the file is executed as a program
-* it has the value equal to the file name when it is imported as a module
-* command-line argments appear in the system variable `sys.argv`, a Python list
-which has the file name as the first member (of index zero)
-
-A common pattern when a file is used both as an independent script and as a
-module imported by other programs
-
 ---
 
 ## Summary
 
 * Basic syntax - indentation
 * Basic built-in types
-* Scalar and container types
+    - Scalar types: int, float, str
+    - Container types: list, dict, set, tuple
 * Variables
-* Functions
-* Modules
+    - names bound to values
+    - untyped
+* Branching
+    - if statement
+* Repetition
+    - while- and for-loops
 
 ---
 
